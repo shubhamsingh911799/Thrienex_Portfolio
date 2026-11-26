@@ -16,13 +16,10 @@ the built site and API on port 3001.
 
 ## Deploy on GitHub Pages
 
-Pushing to `main` runs the GitHub Actions workflow and publishes the static
-portfolio. The live site uses local profile/project data; GitHub Pages cannot run
-the Express API or SQLite database, so its contact section links to GitHub.
-Enable **Settings > Pages > Build and deployment > Source > GitHub Actions**
-if Pages is not enabled for the repository yet. After changing the Pages
-source, push a commit to `main` or run the workflow manually from **Actions** to
-publish the latest build.
+Pushing to `main` runs the GitHub Actions workflow, builds the static portfolio,
+and publishes the generated site files. The live site uses local profile/project
+data; GitHub Pages cannot run the Express API or SQLite database, so its contact
+section links to GitHub.
 
 ## Personalize
 
