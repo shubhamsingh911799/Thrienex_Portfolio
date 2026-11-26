@@ -105,7 +105,7 @@ function App() {
         <section className="hero" id="home">
           <div className="hero-topline">
             <span>Web developer<br />Full-stack / India</span>
-            <span className="hero-index">Portfolio — 2025</span>
+            <span className="hero-index">Portfolio — 2026</span>
           </div>
           <div className="hero-backdrop" aria-hidden="true">PORTFOLIO</div>
           <div className="hero-content">

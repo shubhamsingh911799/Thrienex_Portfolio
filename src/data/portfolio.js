@@ -12,7 +12,7 @@ export const profile = {
 export const projects = [
   {
     id: 1,
-    title: 'Portfolio / 2025',
+    title: 'Portfolio / 2026',
     category: 'DESIGN & DEVELOPMENT',
     description: 'A bold, personal space to bring my work, process and ideas together.',
     number: '01',

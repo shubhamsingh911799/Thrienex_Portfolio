@@ -102,6 +102,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .contact-grid .script-intro { margin-bottom: 17px; font-size: 24px; }
 .contact-grid h2 { font-size: clamp(49px, 6vw, 75px); }
 .contact-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; color: #d2cbc8; font: 12px var(--mono); }
+.contact-link:focus-visible, .github-contact .button:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
 .contact-form { display: flex; flex-direction: column; }
 .contact-form label { margin: 0 0 9px; color: #b6afac; font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .contact-form input, .contact-form textarea { width: 100%; margin-bottom: 21px; padding: 11px 0; border: 0; border-bottom: 1px solid #393534; border-radius: 0; outline: 0; background: transparent; color: #f3f0ed; font-size: 12px; resize: vertical; }
