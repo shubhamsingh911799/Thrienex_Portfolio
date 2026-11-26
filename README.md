@@ -20,7 +20,9 @@ Pushing to `main` runs the GitHub Actions workflow and publishes the static
 portfolio. The live site uses local profile/project data; GitHub Pages cannot run
 the Express API or SQLite database, so its contact section links to GitHub.
 Enable **Settings > Pages > Build and deployment > Source > GitHub Actions**
-if Pages is not enabled for the repository yet.
+if Pages is not enabled for the repository yet. After changing the Pages
+source, push a commit to `main` or run the workflow manually from **Actions** to
+publish the latest build.
 
 ## Personalize
 
