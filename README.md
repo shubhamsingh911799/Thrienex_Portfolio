@@ -14,16 +14,15 @@ messages in `server/data/portfolio.db`. The database is created automatically.
 For a production build, run `npm run build` and then `npm start`; Express serves
 the built site and API on port 3001.
 
-## Deploy on Render
+## Deploy on GitHub Pages
 
-The root `render.yaml` configures a Node web service in Singapore with a
-persistent disk for SQLite. In Render, choose **New > Blueprint**, connect this
-GitHub repository on the `main` branch, review the plan and disk charges, then
-deploy. Render shows the public URL once the first deploy is live. Persistent
-disks require a paid web service.
+Pushing to `main` runs the GitHub Actions workflow and publishes the static
+portfolio. The live site uses local profile/project data; GitHub Pages cannot run
+the Express API or SQLite database, so its contact section links to GitHub.
+Enable **Settings > Pages > Build and deployment > Source > GitHub Actions**
+if Pages is not enabled for the repository yet.
 
 ## Personalize
 
-Update the sample profile in `server/index.js` and replace the example email
-address. Edit the initial project entries there; the sample projects are seeded
-only when the SQLite projects table is empty.
+Update the profile and project entries in `src/data/portfolio.js`. The Express
+API uses the same data and seeds projects into SQLite when its table is empty.

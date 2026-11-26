@@ -101,7 +101,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .contact-grid { display: grid; grid-template-columns: 1fr .72fr; gap: 13%; padding-top: 66px; }
 .contact-grid .script-intro { margin-bottom: 17px; font-size: 24px; }
 .contact-grid h2 { font-size: clamp(49px, 6vw, 75px); }
-.email-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; color: #d2cbc8; font: 12px var(--mono); }
+.contact-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; color: #d2cbc8; font: 12px var(--mono); }
 .contact-form { display: flex; flex-direction: column; }
 .contact-form label { margin: 0 0 9px; color: #b6afac; font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .contact-form input, .contact-form textarea { width: 100%; margin-bottom: 21px; padding: 11px 0; border: 0; border-bottom: 1px solid #393534; border-radius: 0; outline: 0; background: transparent; color: #f3f0ed; font-size: 12px; resize: vertical; }
@@ -112,6 +112,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .form-feedback { margin: 13px 0 0; font-size: 11px; line-height: 1.6; }
 .form-feedback.success { color: #a5d7a4; }
 .form-feedback.error { color: #ff8585; }
+.github-contact { align-self: start; }
+.github-contact p { max-width: 290px; margin: 0 0 20px; color: #a7a09d; font-size: 13px; line-height: 1.7; }
 .site-footer { display: flex; min-height: 85px; align-items: center; justify-content: space-between; padding: 0 7.2%; border-top: 1px solid var(--line); color: #817a77; font: 9px var(--mono); }
 .site-footer .wordmark { color: #f3f0ed; font-size: 20px; }
 .site-footer a { transition: color .2s ease; }

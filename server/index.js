@@ -3,6 +3,7 @@ import { DatabaseSync } from 'node:sqlite';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
+import { profile, projects as portfolioProjects } from '../src/data/portfolio.js';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(currentDirectory, '..');
@@ -33,27 +34,9 @@ if (projectCount.count === 0) {
   const addProject = database.prepare(
     'INSERT INTO projects (title, category, description, number, url) VALUES (?, ?, ?, ?, ?)',
   );
-  addProject.run(
-    'Portfolio / 2025',
-    'DESIGN & DEVELOPMENT',
-    'A bold, personal space to bring my work, process and ideas together.',
-    '01',
-    null,
-  );
-  addProject.run(
-    'Campus Connect',
-    'FULL-STACK WEB APP',
-    'A student-first platform for sharing campus events and useful resources.',
-    '02',
-    null,
-  );
-  addProject.run(
-    'Taskflow',
-    'PRODUCTIVITY TOOL',
-    'A clean task manager designed to make everyday planning feel effortless.',
-    '03',
-    null,
-  );
+  for (const project of portfolioProjects) {
+    addProject.run(project.title, project.category, project.description, project.number, null);
+  }
 }
 
 const app = express();
@@ -62,16 +45,7 @@ const port = Number(process.env.PORT) || 3001;
 app.use(express.json({ limit: '20kb' }));
 
 app.get('/api/profile', (_request, response) => {
-  response.json({
-    name: 'Kumar Shubham',
-    greeting: 'Hello, I’m',
-    role: 'Full-Stack Developer',
-    education: 'CSE Student · Problem Solver',
-    bio: 'I build modern, responsive and user-focused web applications with clean code and a great user experience. Passionate about DSA, full-stack development and AI.',
-    email: 'hello@shubham.dev',
-    availability: 'Available for hire',
-    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Express', 'SQLite'],
-  });
+  response.json(profile);
 });
 
 app.get('/api/projects', (_request, response) => {

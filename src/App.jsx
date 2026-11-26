@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { profile as staticProfile, projects as staticProjects } from './data/portfolio.js';
+
+const isStaticSite = import.meta.env.VITE_STATIC_SITE === 'true';
 
 function ArrowIcon({ diagonal = false }) {
   return (
@@ -20,6 +23,12 @@ function App() {
   const [formState, setFormState] = useState({ status: 'idle', message: '' });
 
   useEffect(() => {
+    if (isStaticSite) {
+      setProfile(staticProfile);
+      setProjects(staticProjects);
+      return;
+    }
+
     async function loadPortfolio() {
       try {
         const [profileResponse, projectsResponse] = await Promise.all([
@@ -115,7 +124,7 @@ function App() {
               <div className="portrait-glow" />
               <img
                 className="portrait-art"
-                src="/profile-photo.png"
+                src={`${import.meta.env.BASE_URL}profile-photo.png`}
                 alt="Kumar Shubham wearing sunglasses and a black shirt"
               />
               <span className="portrait-caption">Building what’s next.</span>
@@ -163,20 +172,31 @@ function App() {
             <div>
               <p className="script-intro">Let’s make it happen</p>
               <h2>Have a good<br /><span>one in mind?</span></h2>
-              <a className="email-link" href={`mailto:${profile.email}`}>{profile.email}<ArrowIcon diagonal /></a>
+              <a className="contact-link" href={profile.github} target="_blank" rel="noreferrer">
+                GitHub profile<ArrowIcon diagonal />
+              </a>
             </div>
-            <form className="contact-form" onSubmit={handleContactSubmit}>
-              <label htmlFor="contact-name">Your name</label>
-              <input id="contact-name" name="name" autoComplete="name" maxLength="100" required placeholder="Jane Smith" />
-              <label htmlFor="contact-email">Email address</label>
-              <input id="contact-email" name="email" type="email" autoComplete="email" maxLength="254" required placeholder="jane@example.com" />
-              <label htmlFor="contact-message">A little about your project</label>
-              <textarea id="contact-message" name="message" rows="3" maxLength="2000" required placeholder="Tell me what you’re thinking..." />
-              <button className="button button-primary form-submit" type="submit" disabled={formState.status === 'sending'}>
-                {formState.status === 'sending' ? 'Sending...' : 'Send a message'} <ArrowIcon />
-              </button>
-              {formState.message && <p className={`form-feedback ${formState.status}`} role="status">{formState.message}</p>}
-            </form>
+            {isStaticSite ? (
+              <div className="github-contact">
+                <p>This GitHub Pages version is static. Reach out through my GitHub profile.</p>
+                <a className="button button-primary" href={profile.github} target="_blank" rel="noreferrer">
+                  Connect on GitHub <ArrowIcon diagonal />
+                </a>
+              </div>
+            ) : (
+              <form className="contact-form" onSubmit={handleContactSubmit}>
+                <label htmlFor="contact-name">Your name</label>
+                <input id="contact-name" name="name" autoComplete="name" maxLength="100" required placeholder="Jane Smith" />
+                <label htmlFor="contact-email">Email address</label>
+                <input id="contact-email" name="email" type="email" autoComplete="email" maxLength="254" required placeholder="jane@example.com" />
+                <label htmlFor="contact-message">A little about your project</label>
+                <textarea id="contact-message" name="message" rows="3" maxLength="2000" required placeholder="Tell me what you’re thinking..." />
+                <button className="button button-primary form-submit" type="submit" disabled={formState.status === 'sending'}>
+                  {formState.status === 'sending' ? 'Sending...' : 'Send a message'} <ArrowIcon />
+                </button>
+                {formState.message && <p className={`form-feedback ${formState.status}`} role="status">{formState.message}</p>}
+              </form>
+            )}
           </div>
         </section>
       </main>
